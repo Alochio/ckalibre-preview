@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#125c46">
+  <meta name="description" content="A Ckalibri oferece soluções em calibração, metrologia, higiene ocupacional e consultoria técnica. Desde 2011, atendendo empresas em todo o Brasil.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ckalibri | Precisão que move o seu negócio">
+  <meta property="og:description" content="Soluções em calibração, metrologia e suporte técnico com atendimento em todo o Brasil.">
+  <meta name="color-scheme" content="light">
+  <title>Ckalibri | Calibração e Metrologia</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <style>
+    :root {
+      --green: #125c46;
+      --green-deep: #0c3e31;
+      --green-dark: #082e25;
+      --lime: #d6ef75;
+      --lime-light: #e9f5bb;
+      --paper: #f7f8f2;
+      --white: #ffffff;
+      --ink: #162b2b;
+      --muted: #64736d;
+      --line: #e1e7dc;
+      --shadow: 0 22px 70px rgba(9, 53, 41, .09);
+      --radius: 22px;
+      --header-height: 80px;
+      --container: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 105px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+    body.menu-open { overflow: hidden; }
+    ::selection { background: var(--lime); color: var(--green-dark); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img, svg { max-width: 100%; }
+    :focus-visible { outline: 3px solid #87b73e; outline-offset: 4px; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--green); font-size: 11px; line-height: 1.45; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; flex: none; width: 20px; height: 2px; border-radius: 2px; background: currentColor; }
+    .eyebrow.light { color: var(--lime); }
+    .section { padding-block: 88px; }
+    .section-heading { max-width: 750px; margin-bottom: 34px; }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { font-size: clamp(46px, 6.8vw, 94px); line-height: 1.01; letter-spacing: -.075em; font-weight: 700; }
+    h2 { font-size: clamp(36px, 4.6vw, 62px); line-height: 1.08; letter-spacing: -.055em; font-weight: 700; }
+    h3 { letter-spacing: -.035em; }
+    .serif { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; letter-spacing: -.067em; }
+    .lead { color: var(--muted); font-size: clamp(16px, 1.5vw, 18px); line-height: 1.7; }
+    .muted { color: var(--muted); }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 12px; min-height: 54px; border: 1px solid transparent; border-radius: 7px; padding: 0 21px; font-size: 14px; font-weight: 750; white-space: nowrap; transition: transform .22s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button svg { width: 18px; height: 18px; flex: none; }
+    .button-primary { background: var(--green); color: #fff; box-shadow: 0 8px 18px rgba(18, 92, 70, .13); }
+    .button-primary:hover { background: var(--green-deep); box-shadow: 0 11px 28px rgba(18, 92, 70, .21); }
+    .button-lime { background: var(--lime); color: var(--green-dark); }
+    .button-lime:hover { background: #e6f7a7; }
+    .button-outline { background: transparent; color: var(--green); border-color: #c8d6cb; }
+    .button-outline:hover { border-color: var(--green); background: #eaf1e8; }
+    .button-white { background: #fff; color: var(--green-dark); }
+    .button-white:hover { background: #edf7e3; }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-weight: 750; font-size: 13px; }
+    .text-link svg { width: 17px; height: 17px; transition: transform .2s ease; }
+    .text-link:hover svg { transform: translateX(4px); }
+
+    /* Topbar / navigation */
+    .topbar { background: var(--green-deep); color: #d8eadf; min-height: 37px; font-size: 11px; letter-spacing: .02em; }
+    .topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 37px; }
+    .topbar-left, .topbar-right { display: flex; align-items: center; gap: 9px; }
+    .topbar svg { width: 13px; height: 13px; color: var(--lime); }
+    .topbar a:hover { color: #fff; }
+    .topbar-divider { display: none; width: 1px; height: 13px; background: rgba(255,255,255,.22); }
+    .header { z-index: 50; position: sticky; top: 0; background: rgba(247,248,242,.96); border-bottom: 1px solid rgba(18,92,70,.09); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: box-shadow .2s ease; }
+    .header.scrolled { box-shadow: 0 10px 32px rgba(10,53,42,.09); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: var(--header-height); }
+    .brand { display: inline-flex; align-items: center; gap: 9px; flex: none; color: var(--green-deep); font-size: 29px; line-height: 1; letter-spacing: -.075em; font-weight: 800; }
+    .brand-symbol { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 10px; background: var(--green); color: var(--lime); }
+    .brand-symbol svg { width: 23px; height: 23px; }
+    .brand-dot { color: #85b33b; }
+    .nav { display: flex; align-items: center; gap: 30px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { position: relative; padding-block: 10px; font-size: 13px; color: #3c504a; font-weight: 650; }
+    .nav-links a::after { position: absolute; left: 0; right: 100%; bottom: 3px; height: 2px; background: var(--green); content: ""; transition: right .2s ease; }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { right: 0; }
+    .nav-links a:hover { color: var(--green); }
+    .header-cta { min-height: 44px; padding-inline: 17px; font-size: 12px; }
+    .menu-button { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid var(--line); background: transparent; border-radius: 9px; color: var(--green); }
+    .menu-button svg { width: 24px; height: 24px; }
+    .menu-overlay { display: none; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding-block: 65px 96px; }
+    .hero::before { content: ""; position: absolute; width: 750px; height: 750px; top: -470px; right: -350px; border-radius: 50%; background: radial-gradient(circle, rgba(214,239,117,.24), transparent 68%); pointer-events: none; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 45px; }
+    .hero-text { padding-block: 23px; }
+    .hero-text .eyebrow { margin-bottom: 24px; }
+    .hero h1 { max-width: 710px; margin-bottom: 26px; }
+    .hero h1 .serif { color: var(--green); }
+    .hero .lead { max-width: 500px; margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+    .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 37px; font-size: 12px; color: var(--muted); }
+    .hero-note svg { width: 28px; height: 28px; color: var(--green); }
+    .hero-visual { position: relative; isolation: isolate; min-height: 545px; display: flex; align-items: center; }
+    .instrument-board { position: relative; width: 100%; height: 510px; border-radius: 200px 200px 22px 22px; overflow: hidden; background: linear-gradient(145deg, #1a7358 0%, #0f503e 42%, #082f27 100%); box-shadow: 0 34px 75px rgba(12,64,49,.2); }
+    .instrument-board::before { content: ""; position: absolute; inset: 0; opacity: .35; background: radial-gradient(circle at 72% 32%, rgba(214,239,117,.35), transparent 45%), repeating-linear-gradient(0deg, transparent 0 35px, rgba(255,255,255,.045) 35px 36px), repeating-linear-gradient(90deg, transparent 0 35px, rgba(255,255,255,.045) 35px 36px); }
+    .instrument-board::after { content: ""; position: absolute; bottom: -100px; left: -100px; height: 270px; width: 270px; border: 1px solid rgba(214,239,117,.23); border-radius: 50%; box-shadow: 0 0 0 48px rgba(214,239,117,.045), 0 0 0 98px rgba(214,239,117,.025); }
+    .board-label { position: absolute; z-index: 2; top: 39px; left: 39px; display: flex; gap: 8px; align-items: center; color: #bce6d2; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+    .board-label::before { content: ""; height: 7px; width: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 5px rgba(214,239,117,.11); }
+    .board-bottom { position: absolute; z-index: 2; bottom: 30px; left: 35px; right: 35px; display: flex; justify-content: space-between; gap: 10px; color: #b3d7c9; font-size: 10px; letter-spacing: .12em; }
+    .board-bottom strong { color: #fff; font-size: 12px; letter-spacing: 0; }
+    .micrometer { position: absolute; z-index: 1; width: 116%; max-width: none; left: -8%; top: 49%; transform: translateY(-50%) rotate(-10deg); overflow: visible; filter: drop-shadow(0 18px 25px rgba(0,0,0,.27)); }
+    .floating-card { position: absolute; z-index: 3; display: flex; align-items: center; gap: 12px; min-height: 77px; padding: 14px 17px; background: rgba(255,255,255,.96); border: 1px solid #eef0e8; box-shadow: var(--shadow); border-radius: 12px; }
+    .floating-card.top { top: 59px; right: -21px; }
+    .floating-card.bottom { bottom: 71px; left: -32px; }
+    .floating-card .mini-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; color: var(--green); background: #eaf4e1; }
+    .floating-card .mini-icon svg { width: 20px; height: 20px; }
+    .floating-card strong { display: block; color: var(--ink); font-size: 13px; margin-bottom: 3px; }
+    .floating-card small { display: block; color: var(--muted); font-size: 10px; }
+    .hero-side-label { position: absolute; right: -46px; bottom: 65px; transform: rotate(-90deg); transform-origin: center; font-size: 10px; letter-spacing: .26em; color: var(--muted); font-weight: 700; }
+
+    /* Metrics */
+    .metrics { position: relative; z-index: 1; margin-top: -28px; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); border-radius: 15px; overflow: hidden; background: #fff; border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(27,74,57,.055); }
+    .metric { padding: 27px 25px; display: flex; align-items: center; gap: 14px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric-icon { display: grid; flex: none; place-items: center; width: 43px; height: 43px; color: var(--green); background: #ecf4e5; border-radius: 12px; }
+    .metric-icon svg { width: 21px; height: 21px; }
+    .metric strong { display: block; font-size: 21px; letter-spacing: -.05em; color: var(--green-deep); }
+    .metric span { display: block; font-size: 11px; line-height: 1.5; color: var(--muted); }
+
+    /* Services */
+    .services { padding-top: 114px; }
+    .section-title-row { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 31px; }
+    .section-title-row .section-heading { margin: 0; }
+    .section-title-row h2 { max-width: 630px; margin: 14px 0 0; }
+    .section-title-row .lead { max-width: 300px; margin: 0 0 5px; font-size: 14px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+    .filter { border: 1px solid #dbe4d8; border-radius: 100px; padding: 11px 17px; background: #fff; color: #4b6358; font-size: 12px; font-weight: 700; transition: background .2s,color .2s,border-color .2s; }
+    .filter[aria-pressed="true"], .filter:hover { color: #fff; background: var(--green); border-color: var(--green); }
+    .service-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+    .service-card { display: flex; flex-direction: column; align-items: flex-start; min-height: 282px; border: 1px solid var(--line); border-radius: 13px; background: #fff; padding: 26px; transition: transform .26s ease, box-shadow .26s ease, border-color .26s ease; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 22px 45px rgba(15,75,55,.09); border-color: #aac9b7; }
+    .service-card[hidden] { display: none !important; }
+    .service-icon { display: grid; place-items: center; width: 56px; height: 56px; background: #eaf3e6; color: var(--green); border-radius: 13px; margin-bottom: 25px; }
+    .service-icon svg { width: 27px; height: 27px; }
+    .service-card h3 { margin-bottom: 11px; font-size: 19px; line-height: 1.28; }
+    .service-card p { margin-bottom: 22px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .service-card .text-link { margin-top: auto; border: 0; background: none; padding: 0; }
+    .services-end { margin-top: 26px; text-align: center; color: var(--muted); font-size: 13px; }
+    .services-end a { color: var(--green); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* About */
+    .about { background: #eaf0e7; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: clamp(40px,6vw,90px); }
+    .about-visual { position: relative; min-height: 485px; background: var(--green-deep); border-radius: 20px; overflow: hidden; }
+    .about-visual::before { position: absolute; inset: 0; background: radial-gradient(circle at 70% 50%,rgba(214,239,117,.16),transparent 51%), repeating-linear-gradient(45deg,transparent 0 30px,rgba(255,255,255,.025) 31px 32px); content: ""; }
+    .about-visual svg.drawing { position: absolute; left: 3%; top: 13%; width: 94%; height: 75%; }
+    .about-tag { position: absolute; top: 28px; left: 27px; display: flex; gap: 9px; align-items: center; color: var(--lime); font-size: 10px; font-weight: 750; letter-spacing: .12em; }
+    .about-tag::before { content: ""; display: block; background: var(--lime); width: 5px; height: 5px; border-radius: 50%; }
+    .about-plate { position: absolute; bottom: 25px; left: 25px; right: 25px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; background: rgba(7,35,29,.65); backdrop-filter: blur(10px); color: #fff; }
+    .about-plate strong { font-size: 14px; }
+    .about-plate span { font-size: 10px; color: #bdd6c9; }
+    .about-copy .eyebrow { margin-bottom: 20px; }
+    .about-copy h2 { margin-bottom: 21px; }
+    .about-copy .lead { font-size: 15px; margin-bottom: 28px; }
+    .about-points { display: grid; gap: 18px; margin-bottom: 28px; }
+    .about-point { display: flex; gap: 13px; align-items: flex-start; }
+    .about-point > span { display: grid; flex: none; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: var(--green); background: var(--lime); }
+    .about-point svg { width: 15px; height: 15px; }
+    .about-point strong { display: block; font-size: 14px; margin-bottom: 5px; }
+    .about-point p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+
+    /* Process */
+    .process .section-heading { margin-inline: auto; max-width: 650px; text-align: center; }
+    .process .section-heading .eyebrow { justify-content: center; }
+    .process h2 { margin-block: 14px 14px; }
+    .process .lead { font-size: 15px; }
+    .steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 0; padding-top: 27px; }
+    .step { position: relative; padding: 16px 27px 12px 0; }
+    .step:not(:last-child)::before { position: absolute; top: 47px; left: 60px; right: 16px; content: ""; height: 1px; background: #bfd3c1; }
+    .step-number { display: grid; position: relative; z-index: 1; place-items: center; height: 64px; width: 64px; border: 1px solid #d5e3d6; border-radius: 50%; background: #eaf3e5; color: var(--green); font-size: 16px; font-weight: 800; margin-bottom: 24px; }
+    .step h3 { margin-bottom: 9px; font-size: 17px; }
+    .step p { color: var(--muted); font-size: 13px; line-height: 1.65; margin: 0; }
+
+    /* Portal */
+    .portal { padding-block: 22px 94px; }
+    .portal-banner { position: relative; overflow: hidden; min-height: 290px; border-radius: 15px; background: var(--green-deep); color: #fff; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 52px 62px; }
+    .portal-banner::before { position: absolute; width: 420px; height: 420px; right: 160px; top: -200px; border: 1px solid rgba(214,239,117,.13); border-radius: 50%; box-shadow: 0 0 0 60px rgba(214,239,117,.035), 0 0 0 130px rgba(214,239,117,.02); content: ""; }
+    .portal-banner > * { position: relative; z-index: 1; }
+    .portal h2 { max-width: 690px; margin: 15px 0 13px; font-size: clamp(31px,3.7vw,48px); }
+    .portal p { max-width: 550px; margin: 0; font-size: 14px; line-height: 1.7; color: #bfd7cc; }
+    .portal-banner .button { min-width: 197px; }
+
+    /* Contact */
+    .contact { background: #fff; }
+    .contact-grid { display: grid; grid-template-columns: .84fr 1.16fr; gap: clamp(38px,7vw,110px); align-items: start; }
+    .contact .eyebrow { margin-bottom: 16px; }
+    .contact-copy h2 { margin-bottom: 22px; }
+    .contact-copy .lead { font-size: 15px; margin-bottom: 32px; }
+    .contact-details { display: grid; gap: 22px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 15px; }
+    .contact-detail > span { width: 42px; height: 42px; display: grid; flex: none; place-items: center; border-radius: 10px; background: #edf4e6; color: var(--green); }
+    .contact-detail svg { width: 20px; height: 20px; }
+    .contact-detail strong { display: block; font-size: 13px; margin: 3px 0 7px; }
+    .contact-detail p, .contact-detail a { display: block; margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+    .contact-detail a:hover { color: var(--green); }
+    .contact-form { padding: 35px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); }
+    .contact-form h3 { font-size: 22px; margin: 0 0 7px; }
+    .contact-form .form-intro { color: var(--muted); font-size: 13px; line-height: 1.5; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; }
+    .field { display: grid; gap: 8px; margin-bottom: 16px; }
+    .field label { font-size: 12px; color: var(--ink); font-weight: 700; }
+    .field label span { color: #8a9b8d; font-weight: 400; }
+    .field input, .field select, .field textarea { min-width: 0; width: 100%; padding: 13px 14px; min-height: 47px; border: 1px solid #d9e3d7; border-radius: 6px; background: #fff; color: var(--ink); outline: none; font-size: 13px; transition: border-color .2s,box-shadow .2s; }
+    .field textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(18,92,70,.11); }
+    .field input::placeholder, .field textarea::placeholder { color: #93a199; }
+    .form-submit { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 9px; }
+    .form-submit .button { width: 100%; }
+    .form-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .honeypot { position: absolute; left: -10000px; opacity: 0; pointer-events: none; }
+
+    /* Footer */
+    .footer { background: var(--green-dark); color: #fff; padding-top: 54px; }
+    .footer-top { display: grid; grid-template-columns: 1.3fr .7fr .8fr; gap: 50px; padding-bottom: 48px; }
+    .footer .brand { color: #fff; margin-bottom: 18px; }
+    .footer .brand-symbol { background: var(--lime); color: var(--green-deep); }
+    .footer-about p { color: #a8c5b7; font-size: 12px; max-width: 310px; line-height: 1.75; }
+    .footer h4 { margin: 9px 0 20px; font-size: 13px; }
+    .footer nav, .footer-contact { display: grid; gap: 13px; align-content: start; }
+    .footer nav a, .footer-contact a, .footer-contact p { color: #a8c5b7; margin: 0; font-size: 12px; line-height: 1.6; }
+    .footer nav a:hover, .footer-contact a:hover { color: var(--lime); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; align-items: center; padding: 21px 0; border-top: 1px solid rgba(255,255,255,.12); color: #a8c5b7; font-size: 11px; }
+    .footer-bottom a:hover { color: #fff; }
+
+    /* Floating WhatsApp / dialog */
+    .whatsapp-float { position: fixed; z-index: 45; right: 24px; bottom: 24px; display: inline-flex; align-items: center; justify-content: center; width: 59px; height: 59px; border: 3px solid #fff; border-radius: 50%; background: #22b56b; color: #fff; box-shadow: 0 9px 28px rgba(7,66,37,.2); transition: transform .2s ease, box-shadow .2s ease; }
+    .whatsapp-float:hover { transform: translateY(-4px); box-shadow: 0 13px 35px rgba(7,66,37,.29); }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+    dialog { width: min(520px, calc(100% - 32px)); max-height: min(85vh,750px); border: 1px solid #d9e5db; border-radius: 16px; padding: 0; color: var(--ink); box-shadow: 0 35px 90px rgba(6,32,24,.26); }
+    dialog::backdrop { background: rgba(3,25,20,.62); backdrop-filter: blur(5px); }
+    .dialog-inner { padding: 34px; }
+    .dialog-header { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    .dialog-header .eyebrow { margin-bottom: 14px; }
+    .dialog-header h3 { font-size: 29px; margin-bottom: 14px; }
+    .dialog-close { display: grid; place-items: center; width: 38px; height: 38px; flex: none; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--green); }
+    .dialog-close svg { width: 19px; height: 19px; }
+    .dialog-inner > p { font-size: 14px; line-height: 1.7; color: var(--muted); }
+    .dialog-points { display: grid; gap: 10px; margin: 24px 0 30px; padding: 0; list-style: none; }
+    .dialog-points li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; }
+    .dialog-points li::before { content: "✓"; font-weight: 800; color: var(--green); }
+
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease,transform .65s cubic-bezier(.2,.8,.2,1); }
+    .js .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1050px) {
+      :root { --header-height: 72px; }
+      .nav-links { gap: 16px; }
+      .nav { gap: 15px; }
+      .hero-grid { gap: 20px; }
+      .hero-visual { min-height: 460px; }
+      .instrument-board { height: 435px; }
+      .metric { padding: 22px 16px; gap: 9px; }
+      .metric-icon { width: 36px; height: 36px; }
+      .metric strong { font-size: 18px; }
+      .metric span { font-size: 10px; }
+      .floating-card.top { right: -5px; }
+      .floating-card.bottom { left: -5px; }
+    }
+    @media (max-width: 800px) {
+      :root { --header-height: 70px; }
+      .section { padding-block: 75px; }
+      .nav-links { display: none; }
+      .menu-button { display: inline-flex; }
+      .header-cta { display: none; }
+      .nav { gap: 0; }
+      .menu-overlay { display: block; position: fixed; inset: calc(var(--header-height) + 37px) 0 0; visibility: hidden; opacity: 0; pointer-events: none; background: rgba(4,28,22,.5); transition: opacity .2s,visibility .2s; z-index: 49; }
+      .menu-overlay.open { visibility: visible; opacity: 1; pointer-events: auto; }
+      .nav-links.open { position: fixed; top: calc(var(--header-height) + 37px); left: 0; right: 0; z-index: 50; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 16px 20px 22px; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 16px 25px rgba(7,40,29,.12); }
+      .nav-links.open a { font-size: 15px; padding: 15px 4px; border-bottom: 1px solid var(--line); }
+      .nav-links.open a::after { display: none; }
+      .hero { padding-block: 45px 80px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero-text { padding: 0; }
+      .hero-text h1 { max-width: 720px; }
+      .hero-visual { width: min(610px,100%); margin-inline: auto; }
+      .instrument-board { height: 480px; }
+      .micrometer { width: 102%; left: -1%; }
+      .metrics { margin-top: -25px; }
+      .metrics-grid { grid-template-columns: repeat(2,1fr); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .service-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .section-title-row { align-items: start; flex-direction: column; gap: 15px; }
+      .section-title-row .lead { max-width: 590px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { max-width: 670px; width: 100%; }
+      .steps { grid-template-columns: repeat(2,1fr); row-gap: 28px; }
+      .step:nth-child(2)::before { display: none; }
+      .portal-banner { grid-template-columns: 1fr; gap: 24px; padding: 45px 35px; }
+      .portal-banner .button { width: fit-content; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-about { grid-column: 1 / -1; }
+    }
+    @media (max-width: 540px) {
+      .container { width: min(var(--container), calc(100% - 34px)); }
+      .topbar { font-size: 10px; }
+      .topbar-right { display: none; }
+      .brand { font-size: 27px; }
+      .brand-symbol { width: 34px; height: 34px; }
+      .hero { padding-top: 39px; padding-bottom: 63px; }
+      .hero-text .eyebrow { margin-bottom: 18px; }
+      .hero h1 { font-size: clamp(43px,12vw,64px); margin-bottom: 20px; }
+      .hero .lead { font-size: 15px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-note { margin-top: 25px; }
+      .hero-visual { min-height: 375px; padding-inline: 10px; }
+      .instrument-board { height: 355px; border-radius: 150px 150px 18px 18px; }
+      .board-label { top: 29px; left: 28px; font-size: 9px; }
+      .micrometer { width: 115%; left: -7%; }
+      .board-bottom { left: 25px; right: 25px; bottom: 20px; font-size: 8px; }
+      .board-bottom strong { font-size: 10px; }
+      .floating-card { min-height: 61px; padding: 9px 10px; gap: 8px; }
+      .floating-card .mini-icon { width: 31px; height: 31px; }
+      .floating-card .mini-icon svg { width: 17px; height: 17px; }
+      .floating-card.top { top: 36px; right: -4px; }
+      .floating-card.bottom { bottom: 47px; left: -4px; }
+      .floating-card strong { font-size: 10px; }
+      .floating-card small { font-size: 9px; }
+      .hero-side-label { display: none; }
+      .metric { padding: 18px 12px; }
+      .metric-icon { width: 32px; height: 32px; border-radius: 8px; }
+      .metric-icon svg { width: 18px; height: 18px; }
+      .metric strong { font-size: 17px; }
+      .metric span { font-size: 9px; }
+      .services { padding-top: 83px; }
+      .section { padding-block: 68px; }
+      .section-title-row h2 { margin-top: 11px; }
+      .filters { flex-wrap: nowrap; width: calc(100vw - 17px); overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
+      .filter { flex: none; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 246px; padding: 23px; }
+      .service-icon { margin-bottom: 20px; }
+      .about-visual { min-height: 360px; }
+      .about-tag { top: 23px; left: 20px; }
+      .about-plate { left: 15px; right: 15px; bottom: 14px; padding: 13px; }
+      .about-plate strong { font-size: 12px; }
+      .about-plate span { font-size: 9px; }
+      .steps { grid-template-columns: 1fr; gap: 0; padding-top: 10px; }
+      .step { display: grid; grid-template-columns: 68px 1fr; grid-template-rows: auto auto; column-gap: 15px; padding-block: 11px 28px; }
+      .step-number { grid-row: 1 / span 2; width: 53px; height: 53px; margin: 0; }
+      .step h3 { margin: 2px 0 7px; }
+      .step p { grid-column: 2; }
+      .step:not(:last-child)::before { top: 65px; left: 26px; right: auto; bottom: -3px; height: auto; width: 1px; }
+      .portal { padding-block: 10px 66px; }
+      .portal-banner { padding: 35px 23px; }
+      .portal-banner .button { width: 100%; }
+      .contact-form { padding: 23px 18px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-about { grid-column: auto; }
+      .footer-bottom { align-items: start; flex-direction: column; }
+      .whatsapp-float { right: 16px; bottom: 16px; width: 53px; height: 53px; }
+      .dialog-inner { padding: 26px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="sr-only" href="#conteudo">Ir para o conteúdo</a>
+  <div class="topbar">
+    <div class="container">
+      <span class="topbar-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-5.5 8-12a8 8 0 1 0-16 0c0 6.5 8 12 8 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        João Monlevade · MG <span class="topbar-divider"></span> Atendimento em todo o Brasil
+      </span>
+      <span class="topbar-right">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.13.96.37 1.89.72 2.78a2 2 0 0 1-.45 2.11L9.1 10.9a16 16 0 0 0 4 4l1.29-1.26a2 2 0 0 1 2.11-.45c.89.35 1.82.59 2.78.72A2 2 0 0 1 22 16.92Z"/></svg>
+        <a href="tel:+553138518927">(31) 3851-8927</a>
+      </span>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand" aria-label="Ckalibri, voltar ao início">
+        <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M8 9h15M8 9v14h15" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="m20 10-8 6 8 7" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        ckalibri<span class="brand-dot">.</span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <div class="nav-links" id="nav-links">
+          <a href="#servicos">Serviços</a>
+          <a href="#empresa">A Ckalibri</a>
+          <a href="#processo">Como funciona</a>
+          <a href="#contato">Contato</a>
+          <a href="https://certificados.ckalibri.com.br/" target="_blank" rel="noopener noreferrer">Certificados ↗</a>
+        </div>
+        <a href="#contato" class="button button-primary header-cta">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+        <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu">
+          <svg id="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text reveal">
+          <div class="eyebrow">Metrologia &amp; calibração industrial</div>
+          <h1 id="hero-title">A precisão que o seu <span class="serif">negócio</span> precisa<span style="color:#8cb53e">.</span></h1>
+          <p class="lead">Soluções em calibração, metrologia e suporte técnico para que sua operação avance com mais confiança, qualidade e segurança.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contato">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+            <a class="button button-outline" href="#servicos">Explorar serviços <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14m-7-7 7 7 7-7"/></svg></a>
+          </div>
+          <div class="hero-note">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m16 3 11 5v8c0 7-5 11-11 13C10 27 5 23 5 16V8L16 3Z" stroke="currentColor" stroke-width="1.7"/><path d="m11 16 3.3 3.3L21 12.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Experiência técnica desde 2011
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Ilustração técnica de um micrômetro, equipamento de medição de precisão">
+          <div class="instrument-board">
+            <div class="board-label">PRECISÃO EM CADA MEDIDA</div>
+            <svg class="micrometer" viewBox="0 0 650 540" fill="none" role="img" aria-label="Desenho técnico ilustrativo de um micrômetro">
+              <defs>
+                <linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".24" stop-color="#a5b4ad"/><stop offset=".52" stop-color="#f4f7f1"/><stop offset=".78" stop-color="#829990"/><stop offset="1" stop-color="#d6e1d9"/></linearGradient>
+                <linearGradient id="metal2" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f5f7ef"/><stop offset=".46" stop-color="#b7c9be"/><stop offset="1" stop-color="#718f81"/></linearGradient>
+                <linearGradient id="frame" x1="0" x2="1"><stop offset="0" stop-color="#d2ed88"/><stop offset=".5" stop-color="#e8f7ac"/><stop offset="1" stop-color="#a9c95a"/></linearGradient>
+              </defs>
+              <g opacity=".35" stroke="#b5e2c9" stroke-width="1">
+                <path d="M20 90h610M20 450h610M80 18v500M567 18v500" stroke-dasharray="4 10"/>
+                <circle cx="322" cy="263" r="208" stroke-dasharray="2 11"/><circle cx="322" cy="263" r="146" stroke-dasharray="2 11"/>
+              </g>
+              <g transform="translate(26 33)">
+                <!-- U-shaped anvil frame -->
+                <path d="M337 116C270 71 145 79 92 150c-59 80-47 189 27 246 79 61 193 32 238-34l-46-39c-36 51-108 63-153 27-50-40-53-115-17-161 34-45 111-52 160-19l36-54Z" fill="#0a3c2f" stroke="url(#frame)" stroke-width="32" stroke-linejoin="round"/>
+                <path d="M335 116C266 70 142 87 93 156c-53 76-40 185 33 239" stroke="#f1ffb6" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+                <!-- Anvil and measuring spindle -->
+                <rect x="283" y="203" width="39" height="81" rx="6" fill="url(#metal2)" stroke="#526c61" stroke-width="2"/>
+                <rect x="297" y="193" width="17" height="10" rx="2" fill="#dcebe2"/>
+                <rect x="319" y="226" width="110" height="30" rx="4" fill="url(#metal)" stroke="#5d766a" stroke-width="2"/>
+                <path d="M349 228v27m10-27v27m10-27v27m10-27v27m10-27v27" stroke="#4b6359" opacity=".52"/>
+                <!-- Sleeve -->
+                <rect x="409" y="204" width="90" height="76" rx="7" fill="url(#metal2)" stroke="#4c665b" stroke-width="3"/>
+                <path d="M420 239h68" stroke="#315c4f" stroke-width="2"/>
+                <g stroke="#315c4f" stroke-width="2"><path d="M429 209v16m10-10v10m10-16v16m10-10v10m10-16v16m10-10v10"/><path d="M429 254v18m10-12v12m10-18v18m10-12v12m10-18v18m10-12v12"/></g>
+                <!-- Thimble -->
+                <rect x="488" y="197" width="101" height="90" rx="13" fill="url(#metal)" stroke="#506b60" stroke-width="3"/>
+                <path d="M496 200v86m10-88v89m10-89v89m10-89v89m10-89v89m10-89v89m10-89v89m10-89v89m10-89v89" stroke="#335b4d" stroke-width="1.5" opacity=".48"/>
+                <rect x="577" y="212" width="21" height="63" rx="5" fill="url(#metal2)" stroke="#506b60" stroke-width="2"/>
+                <rect x="591" y="218" width="23" height="50" rx="6" fill="#acc0b3" stroke="#526b5f" stroke-width="2"/>
+                <path d="M87 358c55 70 143 74 199 46" stroke="#092d23" stroke-opacity=".38" stroke-width="10" stroke-linecap="round"/>
+              </g>
+              <g stroke="#d6ef75" stroke-width="1.2" opacity=".8"><path d="M103 450h144m-144-5v10m144-10v10M460 100h126m-126-5v10m126-10v10"/></g>
+              <g fill="#d6ef75" font-size="12" font-family="Arial,sans-serif" letter-spacing="2"><text x="108" y="471">DIMENSIONAL</text><text x="459" y="91">0,001 mm</text></g>
+            </svg>
+            <div class="board-bottom"><strong>CK / METROLOGIA</strong><span>INSTRUMENTAÇÃO &amp; CONTROLE</span></div>
+          </div>
+          <div class="floating-card top">
+            <span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span>
+            <span><strong>Confiabilidade</strong><small>Em cada resultado</small></span>
+          </div>
+          <div class="floating-card bottom">
+            <span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+            <span><strong>Precisão técnica</strong><small>Para sua operação</small></span>
+          </div>
+          <span class="hero-side-label">METROLOGIA · INDÚSTRIA</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Diferenciais da Ckalibri">
+      <div class="container metrics-grid reveal">
+        <div class="metric"><div class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg></div><div><strong>Desde 2011</strong><span>Experiência em metrologia</span></div></div>
+        <div class="metric"><div class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-3 4-3 14 0 18m0-18c3 4 3 14 0 18"/></svg></div><div><strong>Brasil</strong><span>Atendimento nacional</span></div></div>
+        <div class="metric"><div class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3V10Z"/><path d="M9 20v-7h6v7"/></svg></div><div><strong>In loco</strong><span>Serviços no cliente</span></div></div>
+        <div class="metric"><div class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8m-8 4h5"/></svg></div><div><strong>Digital</strong><span>Acesso aos certificados</span></div></div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicos" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div class="section-heading"><div class="eyebrow">Nossas soluções</div><h2 id="services-title">Precisão para cada <span class="serif" style="color:var(--green)">necessidade.</span></h2></div>
+          <p class="lead">Conheça as especialidades que apoiam o controle, a qualidade e a segurança da sua operação.</p>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Filtrar serviços">
+          <button type="button" class="filter" data-filter="todos" aria-pressed="true">Todas as soluções</button>
+          <button type="button" class="filter" data-filter="calibracao" aria-pressed="false">Calibração</button>
+          <button type="button" class="filter" data-filter="seguranca" aria-pressed="false">Segurança ocupacional</button>
+          <button type="button" class="filter" data-filter="suporte" aria-pressed="false">Suporte técnico</button>
+        </div>
+        <div class="service-grid" id="service-grid">
+          <article class="service-card reveal" data-category="calibracao" data-service="dimensional">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18v10H3V7ZM7 7v5m4-5v3m4-3v5m4-5v3"/></svg></span>
+            <h3>Dimensional</h3><p>Calibração de instrumentos de medição dimensional para controle e confiabilidade nos processos.</p>
+            <button type="button" class="text-link" data-details="dimensional">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+          <article class="service-card reveal" data-category="calibracao" data-service="temperatura">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 14.4V5a3 3 0 0 1 6 0v9.4a5 5 0 1 1-6 0Z"/><path d="M13 9v8"/></svg></span>
+            <h3>Temperatura e pressão</h3><p>Calibração de instrumentos para monitoramento de variáveis essenciais à produção.</p>
+            <button type="button" class="text-link" data-details="temperatura">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+          <article class="service-card reveal" data-category="calibracao" data-service="eletricidade">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m13 2-9 12h7l-1 8 10-13h-7l0-7Z" stroke-linejoin="round"/></svg></span>
+            <h3>Eletricidade</h3><p>Serviços de calibração para instrumentos de medição e grandezas elétricas.</p>
+            <button type="button" class="text-link" data-details="eletricidade">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+          <article class="service-card reveal" data-category="calibracao" data-service="massa">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v18m-7-2h14M4 8h16M6 8l-3 7h6L6 8Zm12 0-3 7h6l-3-7Z"/></svg></span>
+            <h3>Massa, torque e força</h3><p>Precisão em medições usadas em manutenção, qualidade e rotinas industriais.</p>
+            <button type="button" class="text-link" data-details="massa">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+          <article class="service-card reveal" data-category="seguranca" data-service="higiene">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6l-9-4Z"/><path d="M9 12h6m-3-3v6"/></svg></span>
+            <h3>Higiene ocupacional</h3><p>Calibração e locação de equipamentos para apoio ao monitoramento ocupacional.</p>
+            <button type="button" class="text-link" data-details="higiene">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+          <article class="service-card reveal" data-category="suporte" data-service="consultoria">
+            <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18v12H3V7Zm4-4h10v4M7 12h10m-10 4h7"/></svg></span>
+            <h3>Consultoria e suporte</h3><p>Acompanhamento de auditorias, treinamentos, assistência técnica e orientação especializada.</p>
+            <button type="button" class="text-link" data-details="consultoria">Conhecer solução <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+          </article>
+        </div>
+        <p class="services-end reveal">Precisa de outra especialidade? <a href="#contato">Fale com nossa equipe</a> para avaliar sua necessidade.</p>
+      </div>
+    </section>
+
+    <section class="section about" id="empresa" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="about-tag">CKALIBRI / SOLUÇÕES METROLÓGICAS</div>
+          <svg class="drawing" viewBox="0 0 540 415" fill="none" role="img" aria-label="Ilustração técnica de um paquímetro e marcações de medição">
+            <g opacity=".2" stroke="#d6ef75" stroke-width="1"><circle cx="278" cy="197" r="175"/><circle cx="278" cy="197" r="125"/><path d="M278 15v365M55 197h440M72 56l411 297M79 345 475 54" stroke-dasharray="3 8"/></g>
+            <g transform="translate(55 90) rotate(-14 215 130)">
+              <rect x="48" y="135" width="440" height="34" rx="5" fill="#dee7dc" stroke="#8bb8a1" stroke-width="3"/>
+              <path d="M68 136V92c0-25 17-25 18 0v26h28V78h30v60" fill="#d6ef75" stroke="#79a586" stroke-width="3"/>
+              <path d="M235 136V90c0-22 18-21 19 0v28h27V78h29v60" fill="#d0ded3" stroke="#79a586" stroke-width="3"/>
+              <rect x="231" y="131" width="80" height="44" rx="7" fill="#bed3c3" stroke="#719e84" stroke-width="3"/>
+              <path d="M251 142v23m12-23v23m12-23v23m12-23v23" stroke="#47715c" stroke-width="2"/>
+              <path d="M82 138v18m12-18v12m12-12v12m12-12v18m12-18v12m12-12v12m12-12v18m12-18v12m12-12v12m12-12v18m12-18v12m12-12v12m12-12v18m12-18v12" stroke="#50715e" stroke-width="2"/>
+              <rect x="306" y="141" width="160" height="20" rx="3" fill="#c0d0c4"/>
+              <path d="M480 138v30" stroke="#506e59" stroke-width="6"/>
+              <path d="M113 168v49h30v-49M279 175v41h29v-41" fill="#c9e490" stroke="#79a586" stroke-width="3"/>
+            </g>
+            <g fill="#d6ef75" font-family="Arial,sans-serif" font-size="12" letter-spacing="2"><text x="79" y="35">MEDIÇÃO</text><text x="358" y="352">CONTROLE</text></g>
+            <g stroke="#d6ef75" stroke-width="1"><path d="M76 46h107m160 296h123"/></g>
+          </svg>
+          <div class="about-plate"><div><strong>Onde a técnica encontra a confiança.</strong><br><span>Calibração · Metrologia · Indústria</span></div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#d6ef75" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div>
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">Conheça a Ckalibri</div>
+          <h2 id="about-title">Conhecimento técnico. <span class="serif" style="color:var(--green)">Compromisso real.</span></h2>
+          <p class="lead">Desde 2011, a Ckalibri atua em metrologia com uma equipe experiente, apoiando empresas na confiabilidade de suas medições. Com laboratórios em João Monlevade (MG), atende clientes em todo o território nacional.</p>
+          <div class="about-points">
+            <div class="about-point"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><strong>Atendimento flexível</strong><p>Calibrações em laboratório e serviços in loco, conforme a necessidade do cliente.</p></div></div>
+            <div class="about-point"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><strong>Suporte além da calibração</strong><p>Orientação técnica, treinamentos, consultoria e acompanhamento de auditorias.</p></div></div>
+            <div class="about-point"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><div><strong>Documentação acessível</strong><p>Portal digital para consulta dos certificados de calibração emitidos.</p></div></div>
+          </div>
+          <a class="button button-primary" href="#contato">Converse com nossa equipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="processo" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-heading reveal"><div class="eyebrow">Como funciona</div><h2 id="process-title">Do primeiro contato ao <span class="serif" style="color:var(--green)">resultado.</span></h2><p class="lead">Um caminho simples para entender sua demanda e encontrar o atendimento adequado.</p></div>
+        <div class="steps">
+          <div class="step reveal"><span class="step-number">01</span><h3>Fale com a equipe</h3><p>Conte quais instrumentos ou serviços sua empresa precisa.</p></div>
+          <div class="step reveal"><span class="step-number">02</span><h3>Avaliamos a demanda</h3><p>Analisamos a especialidade, o escopo e a forma de atendimento.</p></div>
+          <div class="step reveal"><span class="step-number">03</span><h3>Realizamos o serviço</h3><p>Executamos as atividades de acordo com as condições combinadas.</p></div>
+          <div class="step reveal"><span class="step-number">04</span><h3>Acesse os resultados</h3><p>Consulte as informações e os certificados disponíveis no portal.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portal" aria-labelledby="portal-title">
+      <div class="container">
+        <div class="portal-banner reveal">
+          <div><div class="eyebrow light">Portal de certificados</div><h2 id="portal-title">Seus certificados. <span class="serif" style="color:var(--lime)">Sempre ao seu alcance.</span></h2><p>Consulte os certificados de calibração emitidos pela Ckalibri diretamente no portal de clientes.</p></div>
+          <a class="button button-lime" href="https://certificados.ckalibri.com.br/" target="_blank" rel="noopener noreferrer">Acessar portal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <div class="eyebrow">Vamos conversar?</div>
+          <h2 id="contact-title">Sua próxima medida começa <span class="serif" style="color:var(--green)">aqui.</span></h2>
+          <p class="lead">Conte o que sua empresa precisa. Nossa equipe pode orientar sobre os serviços e as possibilidades de atendimento.</p>
+          <div class="contact-details">
+            <div class="contact-detail"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.13.96.37 1.89.72 2.78a2 2 0 0 1-.45 2.11L9.1 10.9a16 16 0 0 0 4 4l1.29-1.26a2 2 0 0 1 2.11-.45c.89.35 1.82.59 2.78.72A2 2 0 0 1 22 16.92Z"/></svg></span><div><strong>Telefone e WhatsApp</strong><a href="tel:+553138518927">(31) 3851-8927</a><a href="https://wa.me/5531995087713" target="_blank" rel="noopener noreferrer">(31) 9 9508-7713</a></div></div>
+            <div class="contact-detail"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-5.5 8-12a8 8 0 1 0-16 0c0 6.5 8 12 8 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><strong>João Monlevade · Minas Gerais</strong><p>Av. Getúlio Vargas, 5.692 · Santa Bárbara<br>CEP 35930-150</p></div></div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="quote-form">
+          <h3>Solicite um orçamento</h3><p class="form-intro">Preencha os dados e continue o atendimento pelo WhatsApp.</p>
+          <div class="form-row"><div class="field"><label for="name">Seu nome *</label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Como podemos chamar você?"></div><div class="field"><label for="company">Empresa *</label><input id="company" name="company" autocomplete="organization" required maxlength="120" placeholder="Nome da empresa"></div></div>
+          <div class="form-row"><div class="field"><label for="email">E-mail *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="150" placeholder="voce@empresa.com.br"></div><div class="field"><label for="phone">Telefone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required minlength="10" maxlength="20" placeholder="(31) 99999-9999"></div></div>
+          <div class="field"><label for="subject">Especialidade *</label><select id="subject" name="subject" required><option value="">Selecione a área desejada</option><option value="Dimensional">Dimensional</option><option value="Temperatura e pressão">Temperatura e pressão</option><option value="Eletricidade">Eletricidade</option><option value="Massa, torque e força">Massa, torque e força</option><option value="Higiene ocupacional">Higiene ocupacional</option><option value="Consultoria e suporte">Consultoria e suporte</option><option value="Outra especialidade">Outra especialidade</option></select></div>
+          <div class="field"><label for="message">Como podemos ajudar? *</label><textarea id="message" name="message" required maxlength="1600" placeholder="Descreva brevemente os instrumentos, serviços ou necessidades da sua empresa."></textarea></div>
+          <div class="honeypot" aria-hidden="true"><label for="website">Deixe este campo vazio</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <div class="form-submit"><button type="submit" class="button button-primary">Continuar pelo WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button><p class="form-note">Ao continuar, o WhatsApp será aberto com a mensagem preparada. Você poderá revisar antes de enviar. Nenhum dado é enviado por este site.</p></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about"><a href="#inicio" class="brand" aria-label="Ckalibri, início"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M8 9h15M8 9v14h15" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="m20 10-8 6 8 7" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>ckalibri<span class="brand-dot">.</span></a><p>Calibração, metrologia e soluções técnicas para ajudar empresas a trabalhar com mais confiança em cada medida.</p></div>
+        <div><h4>Explore</h4><nav aria-label="Links do rodapé"><a href="#servicos">Nossos serviços</a><a href="#empresa">A Ckalibri</a><a href="#processo">Como funciona</a><a href="#contato">Solicitar orçamento</a><a href="https://certificados.ckalibri.com.br/" target="_blank" rel="noopener noreferrer">Portal de certificados ↗</a></nav></div>
+        <div><h4>Contato</h4><div class="footer-contact"><a href="tel:+553138518927">(31) 3851-8927</a><a href="https://wa.me/5531995087713" target="_blank" rel="noopener noreferrer">(31) 9 9508-7713</a><p>Av. Getúlio Vargas, 5.692<br>Santa Bárbara · João Monlevade / MG</p></div></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> Ckalibri Calibrações Ltda. Todos os direitos reservados.</span><span>Precisão em cada medida.</span></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5531995087713?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20Ckalibri." target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Ckalibri pelo WhatsApp" title="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.02 0C5.4 0 .02 5.37.02 12c0 2.12.56 4.19 1.62 6.02L0 24l6.15-1.61A11.94 11.94 0 0 0 12 23.98h.01C18.64 23.98 24 18.6 24 12a11.86 11.86 0 0 0-3.48-8.52ZM12 21.95c-1.83 0-3.63-.5-5.2-1.42l-.37-.22-3.65.96.98-3.56-.24-.37A9.93 9.93 0 0 1 2.04 12C2.04 6.5 6.5 2.04 12 2.04A9.93 9.93 0 0 1 21.96 12c0 5.49-4.47 9.95-9.96 9.95Zm5.45-7.44c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.66.15-.2.3-.77.97-.94 1.16-.18.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.47-1.75-1.64-2.05-.18-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.66-1.6-.9-2.2-.24-.57-.48-.5-.66-.51H7.8c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.21 5.09 4.49.71.31 1.27.49 1.7.63.71.22 1.36.19 1.88.11.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35Z"/></svg></a>
+
+  <dialog id="service-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <div class="dialog-inner">
+      <div class="dialog-header"><div><div class="eyebrow">Conheça a solução</div><h3 id="dialog-title"></h3></div><button type="button" id="dialog-close" class="dialog-close" aria-label="Fechar detalhes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"/></svg></button></div>
+      <p id="dialog-description"></p>
+      <ul id="dialog-points" class="dialog-points"></ul>
+      <button type="button" class="button button-primary" id="dialog-quote">Solicitar orçamento <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const WHATSAPP_NUMBER = '5531995087713';
+      const services = {
+        dimensional: {
+          title: 'Dimensional',
+          description: 'Serviços de calibração para instrumentos usados na medição de dimensões e no controle de qualidade de processos.',
+          points: ['Instrumentos de medição dimensional', 'Aplicações em inspeção, controle e produção', 'Atendimento conforme a necessidade da operação']
+        },
+        temperatura: {
+          title: 'Temperatura e pressão',
+          description: 'Soluções de calibração para instrumentos relacionados a temperatura e pressão, grandezas importantes em diferentes processos industriais.',
+          points: ['Instrumentação de temperatura', 'Instrumentação de pressão', 'Avaliação da demanda técnica com a equipe']
+        },
+        eletricidade: {
+          title: 'Eletricidade',
+          description: 'Calibração de instrumentos de medição de grandezas elétricas, com foco na confiabilidade das informações de processo.',
+          points: ['Instrumentos de medição elétrica', 'Aplicações em manutenção e controle', 'Escopo e condições sob consulta']
+        },
+        massa: {
+          title: 'Massa, torque e força',
+          description: 'Atendimento para medições relacionadas a massa, torque e força, com aplicações em produção, manutenção e qualidade.',
+          points: ['Instrumentos de medição de massa', 'Instrumentos de torque e força', 'Soluções conforme a aplicação do cliente']
+        },
+        higiene: {
+          title: 'Higiene ocupacional',
+          description: 'Calibração e locação de instrumentos usados em atividades de monitoramento ocupacional, conforme disponibilidade e escopo.',
+          points: ['Detectores de gases', 'Dosímetros e bombas de amostragem', 'Locação de equipamentos sob consulta']
+        },
+        consultoria: {
+          title: 'Consultoria e suporte',
+          description: 'Apoio especializado para empresas que precisam aperfeiçoar práticas, processos e rotinas relacionados à metrologia.',
+          points: ['Treinamentos personalizados', 'Acompanhamento de auditorias', 'Consultoria e assistência técnica']
+        }
+      };
+
+      const header = document.getElementById('header');
+      const navLinks = document.getElementById('nav-links');
+      const menuButton = document.getElementById('menu-button');
+      const menuOverlay = document.getElementById('menu-overlay');
+      const menuIcon = document.getElementById('menu-icon');
+
+      function setMenu(open) {
+        navLinks.classList.toggle('open', open);
+        menuOverlay.classList.toggle('open', open);
+        document.body.classList.toggle('menu-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        menuIcon.innerHTML = open ? '<path d="M5 5 19 19M19 5 5 19"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
+      }
+      menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+      menuOverlay.addEventListener('click', () => setMenu(false));
+      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+      window.addEventListener('resize', () => { if (window.innerWidth > 800) setMenu(false); });
+      window.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
+
+      function syncHeader() { header.classList.toggle('scrolled', window.scrollY > 12); }
+      window.addEventListener('scroll', syncHeader, { passive: true });
+      syncHeader();
+
+      const filters = document.querySelectorAll('[data-filter]');
+      const cards = document.querySelectorAll('.service-card');
+      filters.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          filters.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+          cards.forEach(card => { card.hidden = filter !== 'todos' && card.dataset.category !== filter; });
+        });
+      });
+
+      const dialog = document.getElementById('service-dialog');
+      const dialogTitle = document.getElementById('dialog-title');
+      const dialogDescription = document.getElementById('dialog-description');
+      const dialogPoints = document.getElementById('dialog-points');
+      const subject = document.getElementById('subject');
+      let currentService = '';
+
+      function openDetails(id) {
+        const service = services[id];
+        if (!service) return;
+        currentService = service.title;
+        dialogTitle.textContent = service.title;
+        dialogDescription.textContent = service.description;
+        dialogPoints.replaceChildren(...service.points.map(point => {
+          const li = document.createElement('li');
+          li.textContent = point;
+          return li;
+        }));
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        else { subject.value = service.title; document.getElementById('contato').scrollIntoView(); }
+      }
+      document.querySelectorAll('[data-details]').forEach(button => button.addEventListener('click', () => openDetails(button.dataset.details)));
+      document.getElementById('dialog-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      document.getElementById('dialog-quote').addEventListener('click', () => {
+        if (currentService) subject.value = currentService;
+        dialog.close();
+        document.getElementById('contato').scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        window.setTimeout(() => document.getElementById('name').focus({ preventScroll: true }), 400);
+      });
+
+      document.getElementById('quote-form').addEventListener('submit', event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (!form.reportValidity()) return;
+        if (form.elements.website.value.trim()) return;
+        const values = Object.fromEntries(new FormData(form).entries());
+        const message = [
+          'Olá, equipe Ckalibri! Gostaria de solicitar um orçamento.',
+          '',
+          `Nome: ${values.name.trim()}`,
+          `Empresa: ${values.company.trim()}`,
+          `E-mail: ${values.email.trim()}`,
+          `Telefone: ${values.phone.trim()}`,
+          `Especialidade: ${values.subject}`,
+          '',
+          'Necessidade:',
+          values.message.trim()
+        ].join('\n');
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        const opened = window.open(url, '_blank', 'noopener,noreferrer');
+        if (!opened) window.location.href = url;
+      });
+
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .08, rootMargin: '0px 0px -25px 0px' });
+        reveals.forEach(item => observer.observe(item));
+      } else {
+        reveals.forEach(item => item.classList.add('visible'));
+      }
+    })();
+  </script>
+</body>
+</html>
